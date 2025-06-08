@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] currencies = {"INR", "USD", "EUR"};
+        double[][] rates = {
+            {1, 0.012, 0.011},   // From INR
+            {83.2, 1, 0.93},     // From USD
+            {89.5, 1.07, 1}      // From EUR
+        };
+
+        System.out.println("Currency Converter (Fixed Rates)");
+        for (int i = 0; i < currencies.length; i++) {
+            System.out.println((i + 1) + ". " + currencies[i]);
+        }
+
+        System.out.print("Choose base currency (1-3): ");
+        int base = sc.nextInt() - 1;
+
+        System.out.print("Choose target currency (1-3): ");
+        int target = sc.nextInt() - 1;
+
+        System.out.print("Enter amount to convert: ");
+        double amount = sc.nextDouble();
+
+        double converted = amount * rates[base][target];
+
+        System.out.printf("Converted Amount: %.2f %s\n", converted, currencies[target]);
+
+        sc.close();
+    }
+}
